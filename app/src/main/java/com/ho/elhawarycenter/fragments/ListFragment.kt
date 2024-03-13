@@ -10,10 +10,11 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ho.elhawarycenter.R
 import com.ho.elhawarycenter.adapter.CaseAdapter
 import com.ho.elhawarycenter.databinding.FragmentListBinding
@@ -23,6 +24,7 @@ class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
     private lateinit var listViewModel: ListViewModel
+    private lateinit var mCaseAdapter: CaseAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,7 +43,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mCaseAdapter = CaseAdapter()
+        mCaseAdapter = CaseAdapter()
         binding.rvPatients.apply {
             adapter = mCaseAdapter
             layoutManager = LinearLayoutManager(requireContext())
@@ -57,22 +59,39 @@ class ListFragment : Fragment() {
         }
     }
 
+
     @Deprecated("Deprecated in Java")
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_delete_all, menu)
+        inflater.inflate(R.menu.menu_main, menu)
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = searchItem.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
+
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     @Deprecated("Deprecated in Java")
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_deleteAll) {
-            alertDialogBuilder()
+        when (item.itemId) {
+            R.id.action_deleteAll -> deleteAllDialogBuilder()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun alertDialogBuilder() {
-        val builder = AlertDialog.Builder(requireContext())
+    private fun deleteAllDialogBuilder() {
+        val builder = MaterialAlertDialogBuilder(requireContext())
         builder.setTitle(getString(R.string.alert_dialogue_title))
         builder.setMessage(getString(R.string.alert_dialogue_message))
         val password = EditText(requireContext())

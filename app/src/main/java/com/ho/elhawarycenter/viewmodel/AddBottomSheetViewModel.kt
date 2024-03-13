@@ -18,9 +18,9 @@ class AddBottomSheetViewModel(application: Application) : AndroidViewModel(appli
         caseRepo = CaseRepo(caseDao)
     }
 
-    fun addCase(case: Case) {
+    fun addCase(newCase: Case) {
         viewModelScope.launch(Dispatchers.IO) {
-            caseRepo.addCase(case)
+            caseRepo.addCase(newCase)
         }
     }
 }

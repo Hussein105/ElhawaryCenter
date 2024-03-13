@@ -8,6 +8,7 @@ import com.ho.elhawarycenter.database.CaseDb
 import com.ho.elhawarycenter.model.Case
 import com.ho.elhawarycenter.repo.CaseRepo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class ListViewModel(application: Application) : AndroidViewModel(application) {
@@ -19,6 +20,12 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         val caseDao = CaseDb.getDatabase(application).caseDao()
         caseRepo = CaseRepo(caseDao)
         readAllData = caseRepo.readAllData
+    }
+
+    fun searchCases(name: String): Job {
+        return viewModelScope.launch(Dispatchers.IO) {
+            caseRepo.searchCases(name)
+        }
     }
 
     fun deleteAllCases() {

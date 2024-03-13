@@ -33,19 +33,17 @@ class AddBottomSheetFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            val remaining =
-                totalPriceInput.text.toString().toFloat() - amountPaidInput.text.toString()
-                    .toFloat()
-
-            val rSessions =
-                totalSessionsInput.text.toString().toInt() - takenSessionsInput.text.toString()
-                    .toInt()
-
             saveButton.setOnClickListener {
+                val remaining =
+                    totalPriceInput.text.toString().toFloat() - amountPaidInput.text.toString()
+                        .toFloat()
+                val rSessions =
+                    totalSessionsInput.text.toString().toInt() - takenSessionsInput.text.toString()
+                        .toInt()
                 val case = Case(
                     0,
                     nameInput.text.toString(),
-                    ageInput.text.toString().toInt(),
+                    ageInput.text.toString().toFloat(),
                     diagnosisInput.text.toString(),
                     typeInput.text.toString(),
                     sexInput.text.toString(),
@@ -59,7 +57,6 @@ class AddBottomSheetFragment : BottomSheetDialogFragment() {
                     getString(R.string.place_holder),
                     Date().time
                 )
-
                 try {
                     addViewModel.addCase(case)
                     Toast.makeText(
@@ -67,6 +64,7 @@ class AddBottomSheetFragment : BottomSheetDialogFragment() {
                         getString(R.string.saved_toast),
                         Toast.LENGTH_SHORT
                     ).show()
+                    this@AddBottomSheetFragment.dismiss()
                 } catch (_: RuntimeException) {
                     Toast.makeText(
                         requireContext(),

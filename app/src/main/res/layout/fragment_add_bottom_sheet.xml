@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/add_bottom_sheet"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -15,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_bottom_sheet_label"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
+            android:textAppearance="@style/TextAppearance.Material3.DisplayMedium" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name_input_layout"
@@ -30,8 +31,8 @@
                 android:id="@+id/name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:inputType="textCapWords"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -47,8 +48,8 @@
                 android:id="@+id/age_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:inputType="numberDecimal"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -65,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -82,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -133,24 +134,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/amountRemaining_input_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/amount_remaining"
-            app:counterEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/amountRemaining_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -166,8 +150,8 @@
                 android:id="@+id/totalSessions_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:inputType="numberDecimal"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -183,25 +167,8 @@
                 android:id="@+id/takenSessions_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/remainingSessions_input_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/remaining_sessions"
-            app:counterEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/remainingSessions_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:inputType="numberDecimal"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -218,16 +185,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
-                android:textAppearance="?attr/textAppearanceSubtitle1" />
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/save_button"
+            style="?attr/materialButtonOutlinedStyle"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginTop="8dp"
-            android:text="@string/btn_save"
-            app:cornerRadius="24dp" />
+            android:text="@string/btn_save" />
     </LinearLayout>
 </ScrollView>

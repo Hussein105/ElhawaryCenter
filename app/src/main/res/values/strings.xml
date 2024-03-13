@@ -13,12 +13,12 @@
     <string name="sex">Gender</string>
     <string name="total_price">Total Price: </string>
     <string name="amount_paid">Paid: </string>
-    <string name="money_paid">Paid money</string>
-    <string name="amount_remaining">Remaining money</string>
+    <string name="money_paid">Paid money: </string>
+    <string name="amount_remaining">Remaining money: </string>
     <string name="total_sessions">Total sessions: </string>
     <string name="taken_sessions">Taken sessions: </string>
     <string name="remaining_sessions">Remaining sessions: </string>
-    <string name="notes">Notes</string>
+    <string name="notes">Notes: </string>
     <string name="btn_save">Save</string>
     <string name="list_fragment_label">Cases</string>
     <string name="diagnosis">Diagnosis: </string>
@@ -41,8 +41,10 @@
     <string name="avatar">Avatar</string>
     <string name="gender">Gender: </string>
     <string name="image_button_desc">Add To total price</string>
-    <string name="edit">Edit</string>
+    <string name="edit">Edit notes</string>
     <string name="saved_toast">Saved Successfully</string>
     <string name="date_of_admission">Date of admission</string>
     <string name="updated_toast">Data Updated!</string>
+    <string name="ll_financials">Financials</string>
+    <string name="search">Search</string>
 </resources>

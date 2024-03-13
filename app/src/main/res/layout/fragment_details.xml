@@ -10,58 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/ll_details_historyLabel"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tv_details_historyLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            android:paddingStart="2dp"
-            android:paddingEnd="4dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="8dp"
+            android:text="@string/tv_case_history"
+            android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="4dp"
-                android:text="@string/tv_case_history"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_gravity="end|center"
-                android:background="@color/black" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/iv_avatar"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="8dp"
             android:contentDescription="@string/avatar"
-            android:src="@drawable/ic_avatar_male"
+            android:padding="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_details_historyLabel" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_historyLabel"
+            tools:src="@drawable/ic_orthopedics" />
 
         <TextView
             android:id="@+id/tv_details_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-            app:layout_constraintTop_toBottomOf="@+id/ll_details_historyLabel"
+            app:layout_constraintTop_toTopOf="@+id/iv_avatar"
             tools:ignore="TextContrastCheck"
             tools:text="@string/name" />
 
@@ -69,15 +46,12 @@
             android:id="@+id/tv_details_age"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_details_type"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_avatar"
-            app:layout_constraintTop_toBottomOf="@id/tv_details_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_name"
             tools:ignore="TextContrastCheck"
             tools:text="@string/age" />
 
@@ -85,16 +59,11 @@
             android:id="@+id/tv_details_diagnosis"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_details_age"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_details_age"
-            app:layout_constraintTop_toTopOf="@+id/tv_details_age"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
             tools:ignore="TextContrastCheck"
             tools:text="@string/diagnosis" />
 
@@ -102,15 +71,11 @@
             android:id="@+id/tv_details_type"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/tv_details_diagnosis"
             tools:ignore="TextContrastCheck"
             tools:text="@string/case_type" />
 
@@ -118,12 +83,8 @@
             android:id="@+id/tv_details_gender"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_type"
@@ -131,17 +92,25 @@
             tools:text="@string/gender" />
 
         <TextView
+            android:id="@+id/ll_financialsLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@string/ll_financials"
+            android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_details_gender" />
+
+        <TextView
             android:id="@+id/tv_details_totalPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_details_gender"
+            app:layout_constraintTop_toBottomOf="@id/ll_financialsLabel"
             tools:ignore="TextContrastCheck"
             tools:text="@string/total_price" />
 
@@ -149,12 +118,9 @@
             android:id="@+id/tv_details_paid"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_totalPrice"
             tools:ignore="TextContrastCheck"
@@ -164,12 +130,9 @@
             android:id="@+id/tv_details_remainingMoney"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_paid"
@@ -180,12 +143,9 @@
             android:id="@+id/tv_details_totalSessions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_remainingMoney"
             tools:ignore="TextContrastCheck"
@@ -196,15 +156,9 @@
             android:id="@+id/tv_details_takenSessions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:layout_marginTop="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_totalSessions"
             tools:ignore="TextContrastCheck"
@@ -214,14 +168,9 @@
             android:id="@+id/tv_details_remainingSessions"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_takenSessions"
@@ -232,14 +181,9 @@
             android:id="@+id/tv_details_notes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="7dp"
-            android:minHeight="24dp"
+            android:layout_margin="8dp"
             android:padding="4dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_details_remainingSessions"
@@ -254,27 +198,13 @@
             app:layout_constraintStart_toEndOf="@+id/tv_details_totalPrice"
             app:layout_constraintTop_toTopOf="@+id/tv_details_totalPrice">
 
-            <ImageButton
-                android:id="@+id/imgBtn_add_tPrice"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
+            <Button
+                android:id="@+id/icnBtn_add_tPrice"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/add_circle" />
-
-            <ImageButton
-                android:id="@+id/imgBtn_minus_tPrice"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
-                android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/remove_circle" />
+                app:icon="@drawable/ic_edit" />
         </LinearLayout>
 
         <LinearLayout
@@ -285,27 +215,13 @@
             app:layout_constraintStart_toEndOf="@+id/tv_details_paid"
             app:layout_constraintTop_toTopOf="@+id/tv_details_paid">
 
-            <ImageButton
-                android:id="@+id/imgBtn_add_paid"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
+            <Button
+                android:id="@+id/icnBtn_add_paid"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/add_circle" />
-
-            <ImageButton
-                android:id="@+id/imgBtn_minus_paid"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
-                android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/remove_circle" />
+                app:icon="@drawable/ic_edit" />
         </LinearLayout>
 
         <LinearLayout
@@ -316,27 +232,13 @@
             app:layout_constraintStart_toEndOf="@+id/tv_details_totalSessions"
             app:layout_constraintTop_toTopOf="@+id/tv_details_totalSessions">
 
-            <ImageButton
-                android:id="@+id/imgBtn_add_tSessions"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
+            <Button
+                android:id="@+id/icnBtn_add_tSessions"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/add_circle" />
-
-            <ImageButton
-                android:id="@+id/imgBtn_minus_tSessions"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
-                android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/remove_circle" />
+                app:icon="@drawable/ic_edit" />
         </LinearLayout>
 
         <LinearLayout
@@ -347,47 +249,36 @@
             app:layout_constraintStart_toEndOf="@+id/tv_details_takenSessions"
             app:layout_constraintTop_toTopOf="@+id/tv_details_takenSessions">
 
-            <ImageButton
-                android:id="@+id/imgBtn_add_takenSessions"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
+            <Button
+                android:id="@+id/icnBtn_add_takenSessions"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/add_circle" />
-
-            <ImageButton
-                android:id="@+id/imgBtn_minus_takenSessions"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/white"
-                android:contentDescription="@string/image_button_desc"
-                android:padding="8dp"
-                android:src="@drawable/remove_circle" />
+                app:icon="@drawable/ic_edit" />
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:id="@+id/btn_details_edit"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="@string/edit"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_details_notes" />
 
         <TextView
             android:id="@+id/tv_details_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:gravity="end"
+            android:layout_margin="4dp"
             android:text="@string/date_of_admission"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/btn_details_edit"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_details_edit" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

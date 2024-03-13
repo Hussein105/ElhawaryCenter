@@ -13,18 +13,12 @@
         <action
             android:id="@+id/action_listFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_addBottomSheetFragment"
-            app:destination="@id/addBottomSheetFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.ho.elhawarycenter.fragments.DetailsFragment"
         android:label="@string/fragment_details"
         tools:layout="@layout/fragment_details" >
-        <action
-            android:id="@+id/action_detailsFragment_to_updateBottomSheetFragment"
-            app:destination="@id/updateBottomSheetFragment" />
         <argument
             android:name="CurrentCase"
             app:argType="com.ho.elhawarycenter.model.Case" />
@@ -32,13 +26,4 @@
             android:id="@+id/action_detailsFragment_to_listFragment"
             app:destination="@id/listFragment" />
     </fragment>
-    <dialog
-        android:id="@+id/addBottomSheetFragment"
-        android:name="com.ho.elhawarycenter.fragments.AddBottomSheetFragment"
-        android:label="@string/add_bottom_sheet_label" />
-    <dialog
-        android:id="@+id/updateBottomSheetFragment"
-        android:name="com.ho.elhawarycenter.fragments.UpdateBottomSheetFragment"
-        android:label="@string/update_bottom_sheet_label" >
-    </dialog>
 </navigation>
