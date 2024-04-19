@@ -16,8 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/collapsingToolbarLayoutMediumSize"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:title="@string/app_name"
-            app:contentScrim="?attr/colorPrimary">
+            app:title="@string/app_name">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -34,5 +33,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
