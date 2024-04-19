@@ -76,8 +76,4 @@ class CaseAdapter : RecyclerView.Adapter<CaseAdapter.RecyclerViewHolder>() {
         this.fullCases = cases
         notifyDataSetChanged()
     }
-
-    fun getData(): List<Case> {
-        return fullCases
-    }
 }

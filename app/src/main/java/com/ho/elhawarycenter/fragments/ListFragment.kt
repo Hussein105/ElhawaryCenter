@@ -18,7 +18,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ho.elhawarycenter.R
 import com.ho.elhawarycenter.adapter.CaseAdapter
 import com.ho.elhawarycenter.databinding.FragmentListBinding
-import com.ho.elhawarycenter.model.Case
 import com.ho.elhawarycenter.viewmodel.ListViewModel
 
 class ListFragment : Fragment() {
@@ -26,7 +25,7 @@ class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private lateinit var listViewModel: ListViewModel
     private lateinit var mCaseAdapter: CaseAdapter
-    var mDataSet = listOf<Case>()
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -36,7 +35,7 @@ class ListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentListBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
+//        setHasOptionsMenu(true)
         listViewModel = ViewModelProvider(this)[ListViewModel::class.java]
         return binding.root
     }
@@ -51,6 +50,10 @@ class ListFragment : Fragment() {
         }
 
         listViewModel.readAllData.observe(viewLifecycleOwner) {
+            mCaseAdapter.insertCaseData(it)
+        }
+
+        listViewModel.searchResult.observe(viewLifecycleOwner) {
             mCaseAdapter.insertCaseData(it)
         }
 
@@ -69,25 +72,20 @@ class ListFragment : Fragment() {
         val searchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                mDataSet = mCaseAdapter.getData()
-                mDataSet.filter {
-                    if (newText != null) {
-                        it.name.contains(newText, true)
-                    }
-                    listViewModel.readAllData.observe(viewLifecycleOwner) {
-                        mCaseAdapter.insertCaseData(mDataSet)
-                    }
-                    return true
+                if (query != null) {
+                    listViewModel.search(query)
                 }
-                return false
+                return true
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null) {
+                    listViewModel.search(newText)
+                }
+                return true
             }
         })
 
-        super.onCreateOptionsMenu(menu, inflater)
+        //super.onCreateOptionsMenu(menu, inflater)
     }
 
     @Deprecated("Deprecated in Java")
@@ -95,7 +93,8 @@ class ListFragment : Fragment() {
         when (item.itemId) {
             R.id.action_deleteAll -> deleteAllDialogBuilder()
         }
-        return super.onOptionsItemSelected(item)
+        return true
+        //super.onOptionsItemSelected(item)
     }
 
     private fun deleteAllDialogBuilder() {

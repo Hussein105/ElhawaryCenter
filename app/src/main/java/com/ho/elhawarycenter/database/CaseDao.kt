@@ -18,7 +18,7 @@ interface CaseDao {
     fun readAllCases(): LiveData<List<Case>>
 
     @Query("SELECT * FROM cases WHERE name LIKE '%' || :keyWord || '%'")
-    fun searchCases(keyWord: String): LiveData<List<Case>>
+    fun searchCases(keyWord: String): List<Case>
 
     @Query("SELECT SUM(price) FROM cases")
     fun totalIncome(): Int

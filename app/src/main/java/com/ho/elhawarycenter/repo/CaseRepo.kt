@@ -10,27 +10,30 @@ class CaseRepo(private val caseDao: CaseDao) {
         caseDao.insertCase(newCase)
     }
 
-    suspend fun getTotalIncome() {
-        caseDao.totalIncome()
-    }
+    fun searchCase(keyWord: String) = caseDao.searchCases(keyWord)
 
-    suspend fun updatePrice(caseId: Int, newPrice: String) {
+
+//    fun getTotalIncome() {
+//        caseDao.totalIncome()
+//    }
+
+    fun updatePrice(caseId: Int, newPrice: String) {
         caseDao.updatePrice(caseId, newPrice)
     }
 
-    suspend fun updatePaid(caseId: Int, newPaid: String) {
+    fun updatePaid(caseId: Int, newPaid: String) {
         caseDao.updatePaid(caseId, newPaid)
     }
 
-    suspend fun updateTotalSessions(caseId: Int, newTotalSessions: String) {
+    fun updateTotalSessions(caseId: Int, newTotalSessions: String) {
         caseDao.updateTotalSessions(caseId, newTotalSessions)
     }
 
-    suspend fun updateTakenSessions(caseId: Int, newTakenSessions: String) {
+    fun updateTakenSessions(caseId: Int, newTakenSessions: String) {
         caseDao.updateTakenSessions(caseId, newTakenSessions)
     }
 
-    suspend fun updateNote(caseId: Int, newNote: String) {
+    fun updateNote(caseId: Int, newNote: String) {
         caseDao.updateNote(caseId, newNote)
     }
 
