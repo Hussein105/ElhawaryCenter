@@ -11,7 +11,10 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -43,6 +46,9 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(MyMenuProvider(), viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         mCaseAdapter = CaseAdapter()
         binding.rvPatients.apply {
             adapter = mCaseAdapter
@@ -61,40 +67,6 @@ class ListFragment : Fragment() {
             val addBottomSheetFragment = AddBottomSheetFragment()
             addBottomSheetFragment.show(childFragmentManager, addBottomSheetFragment.tag)
         }
-    }
-
-
-    @Deprecated("Deprecated in Java")
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu_main, menu)
-
-        val searchItem = menu.findItem(R.id.action_search)
-        val searchView = searchItem.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-                    listViewModel.search(query)
-                }
-                return true
-            }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                if (newText != null) {
-                    listViewModel.search(newText)
-                }
-                return true
-            }
-        })
-
-        //super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    @Deprecated("Deprecated in Java")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_deleteAll -> deleteAllDialogBuilder()
-        }
-        return true
-        //super.onOptionsItemSelected(item)
     }
 
     private fun deleteAllDialogBuilder() {
@@ -140,5 +112,37 @@ class ListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    inner class MyMenuProvider : MenuProvider {
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+            menuInflater.inflate(R.menu.menu_main, menu)
+
+            val searchItem = menu.findItem(R.id.action_search)
+            val searchView = searchItem.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if (query != null) {
+                        listViewModel.search(query)
+                    }
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if (newText != null) {
+                        listViewModel.search(newText)
+                    }
+                    return true
+                }
+            })
+        }
+
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+            when (menuItem.itemId) {
+                R.id.action_deleteAll -> deleteAllDialogBuilder()
+            }
+            return true
+        }
+
     }
 }
