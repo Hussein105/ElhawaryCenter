@@ -22,12 +22,6 @@ class ListViewModel(application: Application) : AndroidViewModel(application) {
         readAllData = caseRepo.readAllData
     }
 
-    fun searchCases(name: String): Job {
-        return viewModelScope.launch(Dispatchers.IO) {
-            caseRepo.searchCases(name)
-        }
-    }
-
     fun deleteAllCases() {
         viewModelScope.launch(Dispatchers.IO) {
             caseRepo.deleteAllCases()

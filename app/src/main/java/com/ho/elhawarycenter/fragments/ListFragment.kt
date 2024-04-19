@@ -18,6 +18,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.ho.elhawarycenter.R
 import com.ho.elhawarycenter.adapter.CaseAdapter
 import com.ho.elhawarycenter.databinding.FragmentListBinding
+import com.ho.elhawarycenter.model.Case
 import com.ho.elhawarycenter.viewmodel.ListViewModel
 
 class ListFragment : Fragment() {
@@ -25,7 +26,7 @@ class ListFragment : Fragment() {
     private var _binding: FragmentListBinding? = null
     private lateinit var listViewModel: ListViewModel
     private lateinit var mCaseAdapter: CaseAdapter
-
+    var mDataSet = listOf<Case>()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -68,14 +69,21 @@ class ListFragment : Fragment() {
         val searchView = searchItem.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
-
-                }
-                return true
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                return true
+                mDataSet = mCaseAdapter.getData()
+                mDataSet.filter {
+                    if (newText != null) {
+                        it.name.contains(newText, true)
+                    }
+                    listViewModel.readAllData.observe(viewLifecycleOwner) {
+                        mCaseAdapter.insertCaseData(mDataSet)
+                    }
+                    return true
+                }
+                return false
             }
         })
 

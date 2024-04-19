@@ -10,10 +10,6 @@ class CaseRepo(private val caseDao: CaseDao) {
         caseDao.insertCase(newCase)
     }
 
-    suspend fun searchCases(keyWord: String) {
-        caseDao.searchCases(keyWord)
-    }
-
     suspend fun getTotalIncome() {
         caseDao.totalIncome()
     }
